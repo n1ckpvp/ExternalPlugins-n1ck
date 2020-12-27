@@ -155,6 +155,16 @@ public class Spell extends ClickCompare
 						return;
 					}
 					break;
+				case PLANK_MAKE:
+					if (spell.getSpriteId() != SpriteID.SPELL_PLANK_MAKE ||
+						spell.getSpriteId() == SpriteID.SPELL_PLANK_MAKE_DISABLED ||
+						client.getBoostedSkillLevel(Skill.MAGIC) < 86 ||
+						client.getVar(Varbits.SPELLBOOK) != 2)
+					{
+						clickItem = null;
+						return;
+					}
+					break;
 				default:
 					clickItem = null;
 					break;
@@ -214,6 +224,9 @@ public class Spell extends ClickCompare
 					break;
 				case ENCHANT_ZENYTE:
 					setTargetItem.setTarget("<col=00ff00>Lvl-7 Enchant <col=ffffff> -> " + firstEntry.getTarget());
+					break;
+				case PLANK_MAKE:
+					setTargetItem.setTarget("<col=00ff00>Make Planks <col=ffffff> -> " + firstEntry.getTarget());
 					break;
 			}
 
